@@ -9,7 +9,7 @@ import service.impl.UserServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
-        User user1 = new User(6,"Angel",18, Gender.FEMALE);
+        User user1 = new User(1,"Angel",18, Gender.FEMALE);
         User user2 = new User(2,"Bully",23, Gender.MALE);
         User user3 = new User(3,"Lili",13, Gender.FEMALE);
         User[] userArray = {user1,user2,user3};

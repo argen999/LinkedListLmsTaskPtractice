@@ -27,18 +27,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void foundId(int id) {
+        int counter = 0;
+        for (int i = 0; i < userDao.getUserArray().length; i++) {
+            if (userDao.getUserArray()[i].getId() == id) {
+                System.out.println("ID: "+userDao.getUserArray()[i].getId() );
+                System.out.println("Name: "+userDao.getUserArray()[i].getName() );
+                System.out.println("Age: "+userDao.getUserArray()[i].getAge() );
+                System.out.println("Gender: "+userDao.getUserArray()[i].getGender() );
+                System.out.println("--------------------------");
+                counter++;
+                break;
+            }
+        }
         try {
-            for (int i = 0; i < userDao.getUserArray().length; i++) {
-                if (userDao.getUserArray()[i].getId() == id) {
-                    System.out.println("ID: "+userDao.getUserArray()[i].getId() );
-                    System.out.println("Name: "+userDao.getUserArray()[i].getName() );
-                    System.out.println("Age: "+userDao.getUserArray()[i].getAge() );
-                    System.out.println("Gender: "+userDao.getUserArray()[i].getGender() );
-                    System.out.println("--------------------------");
-                    break;
-                } else {
-                    throw new MyException();
-                }
+            if (counter == 0) {
+                throw new MyException();
             }
         } catch (MyException e) {
             System.out.println("Мы не смогли найти ID с номером "+id+"\n");
